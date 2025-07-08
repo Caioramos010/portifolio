@@ -1,0 +1,588 @@
+.projetos-section {
+  min-height: 100vh;
+  height: 100vh;
+  padding: 6rem 0;
+  position: relative;
+  background: linear-gradient(135deg, var(--background), #1f1b2e);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow-y: auto;
+}
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projeto-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  height: fit-content;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.projeto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(162, 89, 247, 0.2);
+  border-color: var(--secondary);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.projeto-image {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.projeto-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--secondary);
+  transition: transform 0.3s ease;
+}
+
+.projeto-card:hover .projeto-icon {
+  transform: scale(1.1);
+}
+
+.projeto-nome {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.8rem;
+}
+
+.projeto-descricao {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.projeto-tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  background: rgba(162, 89, 247, 0.1);
+  color: var(--secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(162, 89, 247, 0.2);
+}
+
+.projeto-links {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.projeto-link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1;
+  min-width: 80px;
+  font-size: 0.85rem;
+}
+
+.projeto-link:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.projeto-link.demo {
+  background: var(--secondary);
+  color: white;
+}
+
+.projeto-link.demo:hover {
+  background: transparent;
+  color: var(--secondary);
+}
+
+.ver-todos-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 2rem auto 0;
+  max-width: 250px;
+}
+
+.ver-todos-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(162, 89, 247, 0.3);
+}
+
+.ver-todos-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Modal para todos os projetos */
+.projetos-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.projetos-modal-content {
+  background: var(--background);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto !important;
+  border: 1px solid var(--border);
+  
+  /* Garantir que o scroll seja visível e funcional nos modais */
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--secondary) transparent !important;
+  -ms-overflow-style: scrollbar !important;
+  
+  /* Permitir eventos de scroll */
+  pointer-events: auto !important;
+  overscroll-behavior: contain;
+}
+
+/* Mostrar scrollbar nos modais para WebKit browsers */
+.projetos-modal-content::-webkit-scrollbar {
+  display: block !important;
+  width: 8px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar-thumb {
+  background: var(--secondary) !important;
+  border-radius: 4px !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #b65fff !important;
+}
+
+.projetos-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.projetos-modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--secondary);
+}
+
+.projetos-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Modal de detalhes do projeto */
+.projeto-detalhes-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  padding: 2rem;
+  backdrop-filter: blur(15px);
+}
+
+.projeto-detalhes-content {
+  background: var(--background);
+  border-radius: 20px;
+  padding: 0;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto !important;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  
+  /* Garantir que o scroll seja visível e funcional nos modais */
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--secondary) transparent !important;
+  -ms-overflow-style: scrollbar !important;
+  
+  /* Permitir eventos de scroll */
+  pointer-events: auto !important;
+  overscroll-behavior: contain;
+}
+
+/* Mostrar scrollbar no modal de detalhes para WebKit browsers */
+.projeto-detalhes-content::-webkit-scrollbar {
+  display: block !important;
+  width: 8px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.projeto-detalhes-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.projeto-detalhes-content::-webkit-scrollbar-thumb {
+  background: var(--secondary) !important;
+  border-radius: 4px !important;
+}
+
+.projeto-detalhes-content::-webkit-scrollbar-thumb:hover {
+  background: #b65fff !important;
+}
+
+.projeto-detalhes-header {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--secondary), #b65fff);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.projeto-detalhes-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.projeto-detalhes-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.projeto-detalhes-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.projeto-detalhes-titulo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.projeto-detalhes-resumo {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.projeto-detalhes-body {
+  padding: 2rem;
+}
+
+.projeto-detalhes-section {
+  margin-bottom: 2rem;
+}
+
+.projeto-detalhes-section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.projeto-detalhes-section-title svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.projeto-descricao-completa {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.projeto-funcionalidades {
+  list-style: none;
+  padding: 0;
+}
+
+.projeto-funcionalidades li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.projeto-funcionalidades li::before {
+  content: "✓";
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.projeto-tecnologias-detalhadas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.tech-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+  background: rgba(162, 89, 247, 0.1);
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.tech-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-card-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.projeto-links-detalhados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.projeto-link-detalhado {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.projeto-link-detalhado:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(162, 89, 247, 0.3);
+}
+
+.projeto-link-detalhado svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.projeto-link-detalhado.demo {
+  background: var(--gradient-primary);
+  color: white;
+  border-color: var(--secondary);
+}
+
+.projeto-link-detalhado.demo:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .projetos-section {
+    padding: 4rem 0;
+  }
+  
+  .projetos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 0 1rem;
+  }
+  
+  .projeto-card {
+    padding: 1.2rem;
+    min-height: 220px;
+  }
+  
+  .projeto-links {
+    flex-direction: column;
+  }
+  
+  .projeto-link {
+    flex: none;
+  }
+  
+  .ver-todos-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .projetos-modal {
+    padding: 1rem;
+  }
+  
+  .projetos-modal-content {
+    padding: 1.5rem;
+    max-height: 85vh;
+  }
+  
+  .projetos-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .projeto-detalhes-modal {
+    padding: 1rem;
+  }
+  
+  .projeto-detalhes-content {
+    max-height: 95vh;
+  }
+  
+  .projeto-detalhes-header {
+    padding: 1.5rem;
+  }
+  
+  .projeto-detalhes-titulo {
+    font-size: 2rem;
+  }
+  
+  .projeto-detalhes-resumo {
+    font-size: 1rem;
+  }
+  
+  .projeto-detalhes-body {
+    padding: 1.5rem;
+  }
+  
+  .projeto-tecnologias-detalhadas {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .projeto-links-detalhados {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .projetos-section {
+    padding: 3rem 0;
+  }
+  
+  .projeto-card {
+    padding: 1rem;
+    min-height: 200px;
+  }
+  
+  .projeto-nome {
+    font-size: 1.2rem;
+  }
+  
+  .projeto-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .ver-todos-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
