@@ -1,0 +1,51 @@
+* Main Single Page Container */
+.single-page {
+  width: 100%;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  
+  /* Hide scrollbar in Firefox */
+  scrollbar-width: none;
+  
+  /* Hide scrollbar in IE and Edge */
+  -ms-overflow-style: none;
+  
+  /* Ensure smooth scrolling for all browsers */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* Hide scrollbar in Chrome, Safari and Opera */
+.single-page::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
+}
+
+/* Ensure all sections have proper height and snap */
+.single-page > section,
+.single-page > footer {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Footer specific adjustments */
+.single-page > footer {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: end;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .single-page > footer {
+    min-height: 100vh;
+  }
+}
