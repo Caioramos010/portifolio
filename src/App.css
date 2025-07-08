@@ -1,5 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #18122b;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
 .App {
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -34,5 +52,82 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Exemplo de estilos básicos para o portfólio */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--primary);
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 1.2rem 0;
+  list-style: none;
+}
+.navbar a {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.navbar a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+}
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* Remover cards e bordas das seções */
+section {
+  max-width: none;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1, h2, h3 {
+  color: var(--secondary);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin-top: 0;
+}
+
+/* Ajuste para responsividade global */
+@media (max-width: 700px) {
+  section {
+    padding: 0;
   }
 }
