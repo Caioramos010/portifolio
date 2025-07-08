@@ -6,7 +6,6 @@ function SideNavigation() {
   const [isScrolling, setIsScrolling] = useState(false);
   const lastScrollTime = useRef(0);
   const scrollArray = useRef([]);
-  const wheelDirection = useRef('');
 
   const sections = [
     { id: 'hero', label: 'Início' },
@@ -15,18 +14,6 @@ function SideNavigation() {
     { id: 'contato', label: 'Contato' },
     { id: 'footer', label: 'Footer' }
   ];
-
-  // Função auxiliar para calcular média de um array
-  const getAverage = (arr, elements) => {
-    let sum = 0;
-    const lastElements = arr.slice(Math.max(arr.length - elements, 1));
-    
-    for (let i = 0; i < lastElements.length; i++) {
-      sum += lastElements[i];
-    }
-    
-    return Math.ceil(sum / lastElements.length);
-  };
 
   // Detecção automática da seção ativa baseada no scroll
   useEffect(() => {
@@ -180,7 +167,7 @@ function SideNavigation() {
       document.removeEventListener('wheel', handleWheel, { capture: true });
       document.removeEventListener('touchmove', preventDefaultScroll);
     };
-  }, [activeSection, isScrolling]);
+  }, [activeSection, isScrolling, sections]);
 
   // Função para navegar para uma seção específica
   const scrollToSection = (sectionId) => {
