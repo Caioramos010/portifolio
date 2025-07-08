@@ -1,0 +1,105 @@
+/* Sobre Section Styles */
+.sobre-section {
+  min-height: 100vh;
+  height: 100vh;
+  padding: 6rem 0;
+  position: relative;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.sobre-section .section-title {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sobre-section .section-subtitle {
+  color: var(--text-dark-secondary);
+}
+
+.sobre-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sobre-text {
+  margin-bottom: 3rem;
+}
+
+.sobre-text p {
+  font-size: 1.1rem;
+  color: var(--text-dark-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.skills h3 {
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill-tag {
+  background: rgba(162, 89, 247, 0.1);
+  border: 1px solid var(--border-light);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(162, 89, 247, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sobre-section {
+    padding: 4rem 0;
+  }
+  
+  .sobre-content {
+    padding: 0 1rem;
+  }
+  
+  .sobre-text p {
+    font-size: 1rem;
+  }
+  
+  .skills-grid {
+    gap: 0.8rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre-section {
+    padding: 3rem 0;
+  }
+  
+  .skills h3 {
+    font-size: 1.2rem;
+  }
+}

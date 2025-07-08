@@ -1,0 +1,262 @@
+/* Global Variables */
+:root {
+  --primary: #1a1625;
+  --secondary: #a259f7;
+  --background: #18122b;
+  --text: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-dark: #2d3748;
+  --text-dark-secondary: rgba(45, 55, 72, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border: rgba(162, 89, 247, 0.2);
+  --border-light: rgba(162, 89, 247, 0.1);
+  --gradient-primary: linear-gradient(135deg, #a259f7, #b65fff);
+  --gradient-secondary: linear-gradient(135deg, #667eea, #764ba2);
+  --gradient-light: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  --shadow: 0 8px 32px rgba(26, 22, 37, 0.3);
+  --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --section-scroll-duration: 700ms;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hide scrollbar globally */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  background: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  background: transparent;
+}
+
+/* Ensure #root also hides scrollbar */
+#root {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#root::-webkit-scrollbar {
+  display: none;
+}
+
+/* Classe para bloquear scroll da página principal quando modal estiver aberto */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Classes específicas para permitir scroll nos modais */
+.modal-scrollable {
+  scrollbar-width: thin !important;
+  -ms-overflow-style: scrollbar !important;
+  overflow-y: auto !important;
+  
+  /* Garantir que eventos de scroll funcionem */
+  touch-action: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+}
+
+.modal-scrollable::-webkit-scrollbar {
+  display: block !important;
+  width: 8px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.modal-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(162, 89, 247, 0.6) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.modal-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(162, 89, 247, 0.8) !important;
+}
+
+.modal-scrollable::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 4px !important;
+}
+
+/* Força scroll nos modais sobrescrevendo qualquer regra global */
+.projetos-modal-content,
+.projeto-detalhes-content {
+  overflow-y: scroll !important;
+  scrollbar-width: thin !important;
+  -ms-overflow-style: scrollbar !important;
+  
+  /* Garantir funcionalidade do scroll */
+  touch-action: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  pointer-events: auto !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar,
+.projeto-detalhes-content::-webkit-scrollbar {
+  display: block !important;
+  width: 10px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar-thumb,
+.projeto-detalhes-content::-webkit-scrollbar-thumb {
+  background: rgba(162, 89, 247, 0.7) !important;
+  border-radius: 5px !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar-thumb:hover,
+.projeto-detalhes-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(162, 89, 247, 0.9) !important;
+}
+
+.projetos-modal-content::-webkit-scrollbar-track,
+.projeto-detalhes-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 5px !important;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 20px rgba(162, 89, 247, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(162, 89, 247, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .section-title {
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
